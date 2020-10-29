@@ -7,6 +7,7 @@ const passport = require('passport');
 const logger = require('morgan');
 const User = require('./models/user');
 const session = require('express-session');
+const mongoose = require('mongoose');
 
 //Require routes
 const indexRouter = require('./routes/index');
@@ -14,6 +15,19 @@ const postsRouter = require('./routes/posts');
 const reviewsRouter = require('./routes/reviews');
 
 const app = express();
+
+//Database Connection
+mongoose.connect('mongodb://localhost:27017/surf-shop', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongoose db connection error'));
+db.once('open', function(){
+  console.log('We are connected to the mongoose db');
+
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
