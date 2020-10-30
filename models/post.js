@@ -19,8 +19,6 @@ const PostSchema = new Schema({
             ref: 'Review' 
         }
     ]
-
 });
-
 
 module.exports = mongoose.model('Post', PostSchema)

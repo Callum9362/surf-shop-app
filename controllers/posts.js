@@ -4,7 +4,7 @@ module.exports = {
     
     //Get all the posts
     async getPosts(req, res, next) {
-       let posts = Post.find({})
+       let posts = await Post.find({})
        res.render('posts/index', { posts });
     },
     
