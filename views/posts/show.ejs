@@ -2,6 +2,11 @@
 <div>Price: <%= post.price %></div>
 <div>Desc: <%= post.description %></div>
 <div>Location: <%= post.location %></div>
+<div>
+  <% post.images.forEach(function (image) { %>
+    <img src="<%= image.url %>" alt="Surf board image" width="200px">  
+  <% }); %>
+</div>
 <br>
 <div><a href="/posts/<%= post.id %>/edit"><button>Edit</button></a></div>
 <br>
